@@ -1,12 +1,14 @@
 # 🌿 GreenPulse AI — Smart Renewable Energy Asset Intelligence Platform
 
-> **Hackathon Prototype** · All data is simulated for demonstration purposes · Not actual field measurements from Kutch or Banaskantha
+> **Prototype** · All data is simulated for demonstration purposes · Not actual field measurements from Kutch or Banaskantha
 
 [![IBM Granite](https://img.shields.io/badge/IBM%20Granite-LLM-blue)](https://www.ibm.com/watsonx)
 [![React](https://img.shields.io/badge/React-18-61dafb)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178c6)](https://typescriptlang.org)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933)](https://nodejs.org)
 
+---
+> **Demo Preview :**  https://kyt47000.github.io/GreenPulse-AI/
 ---
 
 ## 🎯 Problem
@@ -298,13 +300,13 @@ jobs:
 
 ## ⚠️ Disclaimer
 
-This is a **hackathon prototype**. All data is simulated for demonstration purposes. Asset locations (Kutch, Banaskantha, Bhuj, Mundra, Deesa, Palanpur, Nakhatrana) are representative and not verified GPS field data. Generation figures, sensor readings, maintenance schedules, and impact estimates are synthetic. This application does not connect to any real power infrastructure or control systems.
+This is a **prototype**. All data is simulated for demonstration purposes. Asset locations (Kutch, Banaskantha, Bhuj, Mundra, Deesa, Palanpur, Nakhatrana) are representative and not verified GPS field data. Generation figures, sensor readings, maintenance schedules, and impact estimates are synthetic. This application does not connect to currently any real power infrastructure or control systems.
 
 ---
 
 ## 📄 License
 
-MIT © GreenPulse AI Hackathon Team
+MIT © GreenPulse AI 
 
 ---
 
