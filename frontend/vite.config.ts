@@ -4,6 +4,8 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  // GitHub Pages serves from /greenpulse-ai/ — must match repo name exactly
+  base: process.env.NODE_ENV === 'production' ? '/greenpulse-ai/' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

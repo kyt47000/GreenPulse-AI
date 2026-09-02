@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GreenPulse AI</title>
+  <script>
+    // GitHub Pages SPA routing fix.
+    // When Pages gets a 404 on a deep link (e.g. /greenpulse-ai/assets/WT-07),
+    // it serves this file. We stash the full path in sessionStorage and redirect
+    // to the root, where the React app picks it up and navigates correctly.
+    var l = window.location;
+    sessionStorage.redirect = l.href;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 2).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(1).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+  <noscript>JavaScript is required to run GreenPulse AI.</noscript>
+</body>
+</html>

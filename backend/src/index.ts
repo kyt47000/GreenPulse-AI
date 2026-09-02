@@ -15,7 +15,25 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'] }));
+// Allow localhost dev + any GitHub Pages deploy + Render preview URLs
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  /\.github\.io$/,
+  /\.onrender\.com$/,
+  /\.vercel\.app$/,
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (Postman, curl, server-to-server)
+    if (!origin) return callback(null, true);
+    const allowed = allowedOrigins.some(o =>
+      typeof o === 'string' ? o === origin : o.test(origin)
+    );
+    callback(null, allowed);
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 // Health check

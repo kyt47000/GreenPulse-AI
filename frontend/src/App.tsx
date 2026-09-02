@@ -15,9 +15,12 @@ import AlertCenter from './pages/AlertCenter';
 import RegionalMap from './pages/RegionalMap';
 import Architecture from './pages/Architecture';
 
+// On GitHub Pages the app lives at /greenpulse-ai/ — basename keeps routing correct
+const basename = import.meta.env.BASE_URL === '/' ? '' : '/greenpulse-ai';
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={

@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api', timeout: 10000 });
+// In production (GitHub Pages), point to the live Render backend.
+// In development, the Vite proxy forwards /api → localhost:5000.
+const BASE_URL = import.meta.env.VITE_API_URL ?? '/api';
+
+const api = axios.create({ baseURL: BASE_URL, timeout: 15000 });
 
 // ─── Tool functions (Agent-callable) ─────────────────────────────────────────
 export const getAssets = () => api.get('/assets').then(r => r.data);

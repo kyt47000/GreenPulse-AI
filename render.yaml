@@ -1,0 +1,35 @@
+# render.yaml — Render.com deployment configuration
+# Docs: https://render.com/docs/infrastructure-as-code
+
+services:
+  - type: web
+    name: greenpulse-ai-backend
+    runtime: node
+    region: oregon          # closest to IBM Cloud us-south
+    plan: free              # free tier — sleeps after 15 min inactivity
+
+    # Build from the backend subfolder
+    rootDir: backend
+
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+
+    # Environment variables — set secret values in Render dashboard
+    # Dashboard → Service → Environment → Add environment variable
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000            # Render assigns this port automatically
+      - key: IBM_API_KEY
+        sync: false             # set manually in Render dashboard (secret)
+      - key: IBM_PROJECT_ID
+        sync: false             # set manually in Render dashboard (secret)
+      - key: IBM_URL
+        value: https://us-south.ml.cloud.ibm.com
+
+    # Health check path — Render uses this to verify the service is up
+    healthCheckPath: /api/health
+
+    # Auto-deploy on every push to main
+    autoDeploy: true
