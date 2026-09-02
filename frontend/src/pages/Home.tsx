@@ -128,7 +128,7 @@ export default function Home() {
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 32 }}>
             <div style={{ fontSize: 11, color: 'var(--accent-orange)', textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600, marginBottom: 8 }}>DEMO SCENARIOS</div>
-            <h2>Hackathon Demo Workflows</h2>
+            <h2>Demo Workflows</h2>
           </div>
           <div className="grid-2" style={{ gap: 16 }}>
             <div className="card" style={{ borderTop: '3px solid var(--accent-orange)' }}>
