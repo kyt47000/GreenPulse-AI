@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { assets } from '../data/mockData';
+import { getAssets, getAssetById } from '../data/dataSourceAdapter';
 
 const router = Router();
 
-router.get('/', (_req, res) => res.json(assets));
+router.get('/', (_req, res) => res.json(getAssets()));
 router.get('/:id', (req, res) => {
-  const asset = assets.find(a => a.assetId === req.params.id);
+  const asset = getAssetById(req.params.id);
   if (!asset) return res.status(404).json({ error: 'Asset not found' });
   res.json(asset);
 });

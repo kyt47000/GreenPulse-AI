@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { getGridData } from '../data/mockData';
+import { getGridHistory } from '../data/dataSourceAdapter';
 
 const router = Router();
-router.get('/', (_req, res) => res.json(getGridData(48)));
+
+router.get('/', (_req, res) => res.json(getGridHistory(48)));
+
 export default router;

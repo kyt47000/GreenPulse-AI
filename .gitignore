@@ -29,3 +29,16 @@ Thumbs.db
 # Misc
 .cache/
 *.tsbuildinfo
+
+# docs/ is tracked — README screenshot placeholders live here
+# (do not add docs/ to gitignore)
+
+# LibreOffice / Office temp lock files
+docs/.~lock.*
+*.~lock.*
+
+# Unrelated Office documents in docs/
+docs/*.pptx
+docs/*.docx
+docs/*.xlsx
+docs/new.*

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GreenPulse AI — Renewable Energy Intelligence Platform</title>
+    <!-- IBM Plex Sans + IBM Plex Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- GitHub Pages SPA routing: restore deep-link path saved by 404.html -->
     <script>
       (function () {
@@ -13,6 +17,10 @@
         if (redirect && redirect !== location.href) {
           history.replaceState(null, null, redirect);
         }
+        // Apply saved theme before first paint to avoid flash
+        var saved = localStorage.getItem('greenpulse-theme');
+        var preferred = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', preferred);
       })();
     </script>
   </head>

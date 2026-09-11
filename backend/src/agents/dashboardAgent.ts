@@ -1,12 +1,11 @@
 import { queryGranite } from '../services/graniteService';
-import { assets, maintenanceRecords, alertsData } from '../data/mockData';
+import { getAssets, getAlerts, getMaintenanceRecords } from '../data/dataSourceAdapter';
 
 const SYSTEM_PROMPT = `You are GreenPulse AI Copilot, an intelligent assistant for a renewable energy operations platform monitoring solar and wind assets in Kutch and Banaskantha, Gujarat, India.
 
-You have access to live data from 16 assets: 5 solar farms, 9 wind turbines, 2 hybrid sites.
-Current alerts: WT-07 HIGH risk (gearbox degradation), WT-08 CRITICAL (offline), SF-04 MEDIUM (inverter temperature).
-Current generation: ~570 MW total (solar: 540 MW, wind: 30 MW).
-Performance score: 88.4%. Assets online: 14/16.
+You have access to live telemetry from 19 assets: 6 solar farms, 10 wind turbines, 3 hybrid sites.
+Edge-case scenarios in data: dust storm (SF-06), thermal runaway (HY-03), SCADA comm loss (WT-10), gearbox degradation (WT-07), grid blackout history, high-wind over-speed forecast.
+Current generation: dynamically computed from live simulator. All sensor values update every 3 seconds.
 
 Guidelines:
 - Reference specific asset data when answering
@@ -122,9 +121,10 @@ function getMockResponse(message: string): string {
 }
 
 export async function getAIResponse(message: string): Promise<{ content: string; source: string }> {
-  // Build context from live data
-  const criticalAssets = assets.filter(a => a.riskLevel === 'CRITICAL' || a.riskLevel === 'HIGH');
-  const contextSummary = `Live asset summary: ${assets.length} total assets. Online: ${assets.filter(a => a.status === 'online').length}. Critical/High risk: ${criticalAssets.map(a => a.assetId).join(', ')}. Current total generation: ${assets.reduce((s, a) => s + a.currentOutputMW, 0).toFixed(1)} MW.`;
+  // Build context from live simulator state
+  const assets = getAssets();
+  const criticalAssets = assets.filter((a: any) => a.riskLevel === 'CRITICAL' || a.riskLevel === 'HIGH');
+  const contextSummary = `Live asset summary (simulator tick): ${assets.length} total assets. Online: ${assets.filter((a: any) => a.status === 'online').length}. Critical/High risk: ${criticalAssets.map((a: any) => a.assetId).join(', ')}. Current total generation: ${assets.reduce((s: number, a: any) => s + a.currentOutputMW, 0).toFixed(1)} MW.`;
 
   const fullPrompt = `${contextSummary}\n\nOperator question: ${message}`;
 

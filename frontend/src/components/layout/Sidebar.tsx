@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 const navItems = [
   { path: '/', label: 'Home', icon: '🏠' },
@@ -18,6 +19,7 @@ const navItems = [
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <aside style={{
@@ -27,10 +29,10 @@ export default function Sidebar() {
       borderRight: '1px solid var(--border)',
       display: 'flex',
       flexDirection: 'column',
-      transition: 'width 0.2s',
+      transition: 'width 0.2s, background 0.2s',
       flexShrink: 0,
     }}>
-      {/* Logo */}
+      {/* Logo / collapse toggle */}
       <div style={{
         padding: collapsed ? '16px 12px' : '16px 20px',
         borderBottom: '1px solid var(--border)',
@@ -41,10 +43,13 @@ export default function Sidebar() {
       }} onClick={() => setCollapsed(!collapsed)}>
         <span style={{ fontSize: 20, flexShrink: 0 }}>🌿</span>
         {!collapsed && (
-          <div>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--accent)', letterSpacing: '-0.3px' }}>GreenPulse AI</div>
             <div style={{ fontSize: 10, color: 'var(--text-muted)' }}>Energy Intelligence</div>
           </div>
+        )}
+        {!collapsed && (
+          <span style={{ fontSize: 11, color: 'var(--text-subtle)' }}>‹</span>
         )}
       </div>
 
@@ -87,16 +92,31 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* Footer */}
-      {!collapsed && (
-        <div style={{ padding: '12px 20px', borderTop: '1px solid var(--border)' }}>
+      {/* Footer — theme toggle + info */}
+      <div style={{
+        padding: collapsed ? '12px 10px' : '12px 20px',
+        borderTop: '1px solid var(--border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: collapsed ? 'center' : 'space-between',
+        gap: 8,
+      }}>
+        {!collapsed && (
           <div style={{ fontSize: 10, color: 'var(--text-subtle)', lineHeight: 1.5 }}>
             <div style={{ color: 'var(--accent-blue)', fontWeight: 600, fontSize: 11 }}>IBM Granite LLM</div>
             <div>Prototype · Demo Data</div>
-            <div style={{ marginTop: 4 }}>Kutch &amp; Banaskantha, Gujarat</div>
+            <div style={{ marginTop: 2 }}>Kutch &amp; Banaskantha, Gujarat</div>
           </div>
-        </div>
-      )}
+        )}
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
+      </div>
     </aside>
   );
 }

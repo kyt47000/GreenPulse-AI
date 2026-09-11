@@ -1,6 +1,8 @@
 import { Router } from 'express';
-import { alertsData } from '../data/mockData';
+import { getAlerts } from '../data/dataSourceAdapter';
 
 const router = Router();
-router.get('/', (_req, res) => res.json(alertsData));
+
+router.get('/', (_req, res) => res.json(getAlerts()));
+
 export default router;
