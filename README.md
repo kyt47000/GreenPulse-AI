@@ -19,22 +19,20 @@ _(Deployed on GitHub Pages — runs in **static mock mode**: all data is served 
 
 ## Screenshots
 
-> _Replace the placeholders below with actual screenshots once the app is running._
-
 ### 1 — Command Center (Live Fleet Overview)
-![Command Center — Live fleet KPIs, generation charts, asset status table](docs/screenshots/01-command-center.png)
+<img src="docs/screenshots/01-command-center.png" alt="Command Center — Live fleet KPIs, generation charts, asset status table" width="100%"/>
 
 ### 2 — Asset Monitoring & Detail
-![Asset Monitoring — 19 assets with live health, output, and risk indicators](docs/screenshots/02-asset-monitoring.png)
+<img src="docs/screenshots/02-asset-monitoring.png" alt="Asset Monitoring — 19 assets with live health, output, and risk indicators" width="100%"/>
 
 ### 3 — AI Copilot (IBM Granite LLM)
-![AI Copilot — Chat interface powered by IBM Granite 13B with explainable recommendations](docs/screenshots/03-ai-copilot.png)
+<img src="docs/screenshots/03-ai-copilot.png" alt="AI Copilot — Chat interface powered by IBM Granite 13B with explainable recommendations" width="100%"/>
 
 ### 4 — Alert Center (Real-Time Alerts)
-![Alert Center — Live alerts with AI explanations, severity triage, and one-click resolution](docs/screenshots/04-alert-center.png)
+<img src="docs/screenshots/04-alert-center.png" alt="Alert Center — Live alerts with AI explanations, severity triage, and one-click resolution" width="100%"/>
 
 ### 5 — Platform Architecture Page
-![Architecture — Interactive data source switch, IBM Cloud services, real-time pipeline diagram](docs/screenshots/05-architecture.png)
+<img src="docs/screenshots/05-architecture.png" alt="Architecture — Interactive data source switch, IBM Cloud services, real-time pipeline diagram" width="100%"/>
 
 ---
 
